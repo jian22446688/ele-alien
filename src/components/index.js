@@ -1,0 +1,5 @@
+
+
+const install = (Vue, option = {}) {
+  
+}
