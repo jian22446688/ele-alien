@@ -76,6 +76,7 @@ Vue.use(CButtonTip)
 <c-button-tip>测试</c-button-tip>
 ```
 
+![image](https://github.com/jian22446688/ele-alien/raw/master/images/c-button-tip.png)
 
 ### 属性
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
