@@ -9,11 +9,12 @@ Vue.use(Element)
 
 import './index.js'
 
-import { CButtonTip } from './index'
+import { CButtonTip, CConfirmBox } from './index'
 
 console.log(CButtonTip)
 
 Vue.use(CButtonTip)
+Vue.use(CConfirmBox)
 
 new Vue({
   render: h => h(App),

@@ -1,6 +1,10 @@
 import ButtonTip from '../packages/ButtonTip'
 
+import ConfirmBox from '../packages/ConfirmBox'
+
 export const CButtonTip = ButtonTip
+
+export const CConfirmBox = ConfirmBox
 
 // const install = function(Vue, opt = {}) {
 //   components.forEach(component => {

@@ -2,7 +2,7 @@
  * @Author: Cary
  * @Date: 2019-04-15 11:56:53
  * @Last Modified by: Cary
- * @Last Modified time: 2019-04-15 17:45:40
+ * @Last Modified time: 2019-04-16 09:31:26
  */
 
 /*
@@ -39,6 +39,7 @@
  */
 
 export default {
+  
   confirmBox({
     component = null,
     componentName = '',
@@ -46,9 +47,6 @@ export default {
     confirmValidate = () => {},
     ...rest
   }) {
-    console.log('init confirmbox')
-    console.log(rest)
-    console.log(component)
     const h = this.$createElement
     return new Promise((resolve, reject) => {
       this.$msgbox({
