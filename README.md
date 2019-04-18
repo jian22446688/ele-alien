@@ -128,7 +128,7 @@ Vue.use(CButtonTip)
 | cancel | 点击 弹出框取消按钮时触发的事件 | visable |
 - - -
 
-- - -
+
 ## CConfirmBox
 
 
@@ -207,7 +207,7 @@ const myComponent = {
 
 - - -
 
-- - -
+
 ## CDrawer
 
 
@@ -224,6 +224,7 @@ Vue.use(Element)
 # 可以单个注册组件
 
 import { CDrawer } from 'ele-alien'
+import 'ele-alien/dist/c-ele-alien.css'
 Vue.use(CDrawer)
 
 ```

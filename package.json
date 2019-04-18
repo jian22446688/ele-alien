@@ -1,10 +1,10 @@
 {
   "name": "ele-alien",
   "description": " A Vue.js elementui componenty",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "author": "Cary <798171920@qq.com>",
   "private": false,
-  "main": "dist/c-ele-aliencommon.js",
+  "main": "./dist/c-ele-alien.common.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/jian22446688/ele-alien/issues"
   },
-  "unpkg": "dist/c-ele-alien.common.js",
+  "unpkg": "./dist/c-ele-alien.common.js",
   "dependencies": {
     "core-js": "^2.6.5",
     "element-ui": "^2.7.2",
