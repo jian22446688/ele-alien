@@ -6,6 +6,7 @@
   "private": false,
   "main": "dist/c-ele-aliencommon.js",
   "scripts": {
+    "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:npm": "vue-cli-service build --target lib --name c-ele-alien src/index.js",
@@ -25,6 +26,8 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "element-ui": "^2.7.2",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {

@@ -2,10 +2,13 @@ import ButtonTip from '../packages/ButtonTip'
 
 import ConfirmBox from '../packages/ConfirmBox'
 
+import Drawer from '../packages/Drawer'
+
 export const CButtonTip = ButtonTip
 
 export const CConfirmBox = ConfirmBox
 
+export const CDrawer = Drawer
 // const install = function(Vue, opt = {}) {
 //   components.forEach(component => {
 //     Vue.component(component.name, component)

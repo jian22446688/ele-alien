@@ -146,7 +146,7 @@ Vue.use(Element)
 
 # 可以单个注册组件
 
-import { CConfirmBox } from './index'
+import { CConfirmBox } from 'ele-alien'
 Vue.use(CConfirmBox)
 
 ```
@@ -207,7 +207,60 @@ const myComponent = {
 
 - - -
 
+- - -
+## CDrawer
 
+
+### 基础用法
+> 左右抽屉组件
+
+``` javascript
+import Vue from 'vue'
+import Element from 'element-ui'
+Vue.use(Element)
+
+# main.js
+
+# 可以单个注册组件
+
+import { CDrawer } from 'ele-alien'
+Vue.use(CDrawer)
+
+```
+
+```html
+  <c-drawer v-model="isdrawer" :showHeader="true" placement="left">
+    <div style="padding-bottom: 16px">
+      <el-button type="primary" @click="isdrawer = false">test</el-button>
+    </div>
+  </c-drawer>
+```
+
+![image](https://github.com/jian22446688/ele-alien/raw/master/images/c-drawer.png)
+
+### 属性
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| title | 提示信息 | string | — | 提示 |
+| value / v-model | 状态是否可见 | boolean | — | false |
+| width | 抽屉的宽度 | number | — | 260 |
+| placement | 出现位置 | String | right/left | right |
+| showHeader | 是否显示标题 | boolean | — | true |
+| show-close | 是否显示关闭按钮 | boolean | — | true |
+| closeOnClickModal | 是否可以通过点击遮罩关闭 Drawer | boolean | — | false |
+
+### Slot
+| name | 说明 |
+|---------- |-------- |
+| —  | drawer内容 |
+| title | drawer 标题区的内容 |
+
+### 事件
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| open | 打开的回调 | — |
+| close | 关闭的回调 | — |
+- - -
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

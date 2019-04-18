@@ -7,14 +7,11 @@ Vue.use(Element)
 
 // import CAlien from './index'
 
-import './index.js'
-
-import { CButtonTip, CConfirmBox } from './index'
-
-console.log(CButtonTip)
+import { CButtonTip, CConfirmBox, CDrawer} from './index'
 
 Vue.use(CButtonTip)
 Vue.use(CConfirmBox)
+Vue.use(CDrawer)
 
 new Vue({
   render: h => h(App),
