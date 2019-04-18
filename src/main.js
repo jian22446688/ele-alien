@@ -5,8 +5,6 @@ Vue.config.productionTip = false
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(Element)
 
-// import CAlien from './index'
-
 import { CButtonTip, CConfirmBox, CDrawer} from './index'
 
 Vue.use(CButtonTip)
