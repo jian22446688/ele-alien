@@ -71,6 +71,15 @@ npm install -s ele-alien
 
 ```
 
+## upload npm package
+
+```bash
+# 修改 package.json 中的版本
+npm publish
+
+```
+
+
 ## 组件是基于 element-ui 框架
 
 ```shell
