@@ -1,43 +1,5 @@
 # ele-alien
 
-<p align="center">
-  <a href="https://www.npmjs.org/package/ele-alien">
-    <img src="https://img.shields.io/npm/v/ele-alien.svg">
-  </a>
-  <a href="https://npmcharts.com/compare/ele-alien?minimal=true">
-    <img src="http://img.shields.io/npm/dm/ele-alien.svg">
-  </a>
-  <a href="http://img.badgesize.io/https://unpkg.com/ele-alien/dist/c-ele-alien.common.js?compression=gzip&label=gzip%20size:%20JS">
-    <img src="http://img.badgesize.io/https://unpkg.com/ele-alien/dist/c-ele-alien.common.js?compression=gzip&label=gzip%20size:%20JS">
-  </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
-  </a>
-</p>
-
-
-## Element-ui Links
-- Homepage and documentation
-  - [International users](http://element.eleme.io/#/en-US)
-  - [Chinese users](http://element-cn.eleme.io/#/zh-CN)
-  - [Spanish users](http://element.eleme.io/#/es)
-  - [French users](http://element.eleme.io/#/fr-FR)
-- [awesome-element](https://github.com/ElementUI/awesome-element)
-- [FAQ](./FAQ.md)
-- [Customize theme](http://element.eleme.io/#/en-US/component/custom-theme)
-- [Preview and generate theme online](https://elementui.github.io/theme-chalk-preview)
-- [Element for React](https://github.com/elemefe/element-react)
-- [Element for Angular](https://github.com/ElemeFE/element-angular)
-- [Atom helper](https://github.com/ElemeFE/element-helper)
-- [Visual Studio Code helper](https://github.com/ElemeFE/vscode-element-helper)
-- Starter kit
-  - [element-starter](https://github.com/ElementUI/element-starter)
-  - [element-in-laravel-starter](https://github.com/ElementUI/element-in-laravel-starter)
-- [Design resources](https://github.com/ElementUI/Resources)
-- Gitter
-  - [International users](https://gitter.im/element-en/Lobby)
-  - [Chinese users](https://gitter.im/ElemeFE/element)
-
 ## Project setup
 ```
 npm install
