@@ -1936,6 +1936,22 @@ $exports.store = store;
 
 /***/ }),
 
+/***/ "5176":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("51b6");
+
+/***/ }),
+
+/***/ "51b6":
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("a3c3");
+module.exports = __webpack_require__("584a").Object.assign;
+
+
+/***/ }),
+
 /***/ "520a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2814,6 +2830,48 @@ module.exports = __webpack_require__("35e8");
 
 /***/ }),
 
+/***/ "9306":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// 19.1.2.1 Object.assign(target, source, ...)
+var getKeys = __webpack_require__("c3a1");
+var gOPS = __webpack_require__("9aa9");
+var pIE = __webpack_require__("355d");
+var toObject = __webpack_require__("241e");
+var IObject = __webpack_require__("335c");
+var $assign = Object.assign;
+
+// should work with symbols and should have deterministic property order (V8 bug)
+module.exports = !$assign || __webpack_require__("294c")(function () {
+  var A = {};
+  var B = {};
+  // eslint-disable-next-line no-undef
+  var S = Symbol();
+  var K = 'abcdefghijklmnopqrst';
+  A[S] = 7;
+  K.split('').forEach(function (k) { B[k] = k; });
+  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
+}) ? function assign(target, source) { // eslint-disable-line no-unused-vars
+  var T = toObject(target);
+  var aLen = arguments.length;
+  var index = 1;
+  var getSymbols = gOPS.f;
+  var isEnum = pIE.f;
+  while (aLen > index) {
+    var S = IObject(arguments[index++]);
+    var keys = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S);
+    var length = keys.length;
+    var j = 0;
+    var key;
+    while (length > j) if (isEnum.call(S, key = keys[j++])) T[key] = S[key];
+  } return T;
+} : $assign;
+
+
+/***/ }),
+
 /***/ "9aa9":
 /***/ (function(module, exports) {
 
@@ -2963,6 +3021,17 @@ var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) 
 };
 exports.BREAK = BREAK;
 exports.RETURN = RETURN;
+
+
+/***/ }),
+
+/***/ "a3c3":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__("63b6");
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__("9306") });
 
 
 /***/ }),
@@ -4044,7 +4113,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4248ddb7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/ButtonTip/src/main.vue?vue&type=template&id=bc2110d8&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/ButtonTip/src/main.vue?vue&type=template&id=bc2110d8&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('el-popover',{attrs:{"placement":"top","width":_vm.width},model:{value:(_vm.visable),callback:function ($$v) {_vm.visable=$$v},expression:"visable"}},[_c('p',[_vm._v(_vm._s(_vm.title))]),_c('div',{staticStyle:{"text-align":"right","margin":"0"}},[_c('el-button',{attrs:{"size":"mini","type":"text"},on:{"click":_vm.tipHandleCancel}},[_vm._v(_vm._s(_vm.cancel))]),_c('el-button',{attrs:{"type":"primary","size":"mini"},on:{"click":_vm.tipHandleConfirm}},[_vm._v(_vm._s(_vm.confirm))])],1),_c('button',{staticClass:"el-button",class:[
         _vm.type ? 'el-button--' + _vm.type : '',
         _vm.buttonSize ? 'el-button--' + _vm.buttonSize : '',
@@ -4306,6 +4375,10 @@ main.install = function (Vue) {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
 var es6_array_find = __webpack_require__("7514");
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/assign.js
+var object_assign = __webpack_require__("5176");
+var assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
+
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
 var get_own_property_descriptor = __webpack_require__("268f");
 var get_own_property_descriptor_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptor);
@@ -4405,7 +4478,8 @@ function _objectWithoutProperties(source, excluded) {
 
   return target;
 }
-// CONCATENATED MODULE: ./packages/ConfirmBox/src/main.js
+// CONCATENATED MODULE: ./packages/ConfirmBox/index.js
+
 
 
 
@@ -4416,7 +4490,7 @@ function _objectWithoutProperties(source, excluded) {
  * @Author: Cary
  * @Date: 2019-04-15 11:56:53
  * @Last Modified by: Cary
- * @Last Modified time: 2019-04-16 09:31:26
+ * @Last Modified time: 2019-04-30 09:04:09
  */
 
 /*
@@ -4451,7 +4525,7 @@ function _objectWithoutProperties(source, excluded) {
   center	是否居中布局	boolean	—	false
   roundButton	是否使用圆角按钮	boolean	—	false
  */
-/* harmony default export */ var src_main = ({
+/* harmony default export */ var ConfirmBox = ({
   confirmBox: function confirmBox(_ref) {
     var _this = this;
 
@@ -4470,9 +4544,9 @@ function _objectWithoutProperties(source, excluded) {
       _this.$msgbox(_objectSpread({
         title: '提示',
         message: h(component, {
-          props: {
-            componentProps: componentProps
-          }
+          props: assign_default()(componentProps, {
+            width: '800px'
+          })
         }),
         showCancelButton: true,
         beforeClose: function beforeClose(action, instance, done) {
@@ -4485,22 +4559,7 @@ function _objectWithoutProperties(source, excluded) {
     });
   }
 });
-// CONCATENATED MODULE: ./packages/ConfirmBox/index.js
-/* 
- * @Author: Cary 
- * @Date: 2019-04-15 17:46:17 
- * @Last Modified by: Cary
- * @Last Modified time: 2019-04-16 11:13:28
- */
-
-
-src_main.install = function (Vue) {
-  var opt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  Vue.prototype.$cConfrimBox = src_main.confirmBox;
-};
-
-/* harmony default export */ var ConfirmBox = (src_main);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4248ddb7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/Drawer/src/main.vue?vue&type=template&id=91851d00&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/Drawer/src/main.vue?vue&type=template&id=91851d00&scoped=true&
 var mainvue_type_template_id_91851d00_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"drawerPanel",staticClass:"drawer-panel-container",class:{'c-drawer-show':_vm.value}},[_c('div',{staticClass:"drawer-panel-background",on:{"click":_vm.closeSidebar}}),_c('div',{class:{'drawer-panel': true, 'drawer-panel-left': _vm.placement=='left'},style:({width: _vm.width + 'px'})},[(_vm.showHeader)?_c('div',{staticClass:"c-drawer-header"},[_vm._t("title",[_c('span',{staticClass:"c-drawer-title"},[_vm._v(_vm._s(_vm.title))])]),(_vm.showClose)?_c('button',{staticClass:"c-drawer-closebtn",attrs:{"type":"button","aria-label":"Close"},on:{"click":_vm.handleClose}},[_c('i',{staticClass:"el-icon el-icon-close"})]):_vm._e()],2):_vm._e(),_c('div',{class:_vm.showHeader ? 'c-drawer-body-t':'c-drawer-body'},[_c('el-scrollbar',{attrs:{"view-style":{height: _vm.showHeader ? 'calc(100vh - 65px)':'calc(100vh - 16px)'}}},[_vm._t("default")],2)],1)])])}
 var mainvue_type_template_id_91851d00_scoped_true_staticRenderFns = []
 
@@ -4692,18 +4751,18 @@ var src_main_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var Drawer_src_main = (src_main_component.exports);
+/* harmony default export */ var src_main = (src_main_component.exports);
 // CONCATENATED MODULE: ./packages/Drawer/index.js
 
 
 
-Drawer_src_main.install = function (Vue) {
+src_main.install = function (Vue) {
   var opt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   // require('./src/style.scss')
-  Vue.component(Drawer_src_main.name, Drawer_src_main);
+  Vue.component(src_main.name, src_main);
 };
 
-/* harmony default export */ var Drawer = (Drawer_src_main);
+/* harmony default export */ var Drawer = (src_main);
 // CONCATENATED MODULE: ./src/index.js
 
 
