@@ -2,6 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 const CompressionPlugin = require("compression-webpack-plugin")
 
+const name = 'ele-alien' // page title
+
 // 排除发布不打包的库文件
 function getProdExternals() {
   return {
@@ -21,7 +23,15 @@ module.exports = {
   //   libraryTarget: 'umd',
   //   umdNamedDefine: true
   // }
+
+  
   configureWebpack: {
+    name: name,
+    resolve: {
+      alias: {
+        '@': resolve('src')
+      }
+    },
     externals: process.env.NODE_ENV === 'production' ?
       getProdExternals() : {}
   },

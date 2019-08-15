@@ -1,6 +1,45 @@
 ## 组件说明
 
 
+## 所有分页接口
+
+> 通用规则所有的分页建议统一, 固定的 total, pageSize, page, items 
+
+> 所有直接使用接口都是这个形式, 返回一个 Promise 对象数据格式如下:
+
+
+分页数据接口样式
+例如: api/moudeos/teble.js 
+
+```javascript
+
+import request from '@/utils/request'
+export function getList(params) {
+  return request({
+    url: '/table/list',
+    method: 'get',
+    params
+  })
+}
+
+```
+
+
+```json
+{
+  "code": 1,
+  "message": "客源列表",
+  "data": {
+    "total": 360,
+    "pageSize": 10,
+    "page": 1,
+    "items": []
+  }
+}
+
+
+
+
 ### 组件列表
 
 - VueAudio
