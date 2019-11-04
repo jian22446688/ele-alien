@@ -1,6 +1,12 @@
+/*
+ * @Description: 文件及简介
+ * @Author: Cary
+ * @Date: 2019-04-15 14:56:33
+ */
 var path = require('path')
 var webpack = require('webpack')
 const CompressionPlugin = require("compression-webpack-plugin")
+const uglify = require('uglifyjs-webpack-plugin');
 
 const name = 'ele-alien' // page title
 
@@ -14,6 +20,10 @@ function getProdExternals() {
   }
 }
 
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = {
   // entry: '',
   // output: {
@@ -23,30 +33,19 @@ module.exports = {
   //   libraryTarget: 'umd',
   //   umdNamedDefine: true
   // }
-
-  
   configureWebpack: {
     name: name,
+    
     resolve: {
       alias: {
         '@': resolve('src')
       }
     },
+    plugins: [
+        new uglify()
+    ],
+
     externals: process.env.NODE_ENV === 'production' ?
       getProdExternals() : {}
-  },
-  // configureWebpack:config=>{
-  //   if(process.env.NODE_ENV === 'production'){
-  //       return{
-  //           plugins: [
-  //               new CompressionPlugin({
-  //                   test:/\.js$|\.html$|.\css/, //匹配文件名
-  //                   threshold: 10240,//对超过10k的数据压缩
-  //                   deleteOriginalAssets: false //不删除源文件
-  //               })
-  //           ]
-  //       }
-  //   }
-  // }
-
+  }
 }

@@ -28,6 +28,7 @@
     "element-ui": "^2.7.2",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
