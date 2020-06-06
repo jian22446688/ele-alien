@@ -1,3 +1,8 @@
+<!--
+ * @Description: 大型分页选择器
+ * @Author: Cary
+ * @Date: 2019-06-05 14:36:59
+ -->
 <template>
   <el-select
     ref="mySelect"
@@ -6,8 +11,10 @@
     :filter-method="filterMethod"
     :placeholder="option.palceholder"
     style="width: 100%"
+    clearable
+    @clear="handleClear"
     @visible-change="handleVisibleChange">
-    <div slot="empty" class="table-box" style="max-width: 645px;">
+    <div slot="empty" class="table-box" style="max-width: 545px;">
       <c-super-table
         v-if="isVisible"
         ref="mySelectTable"
@@ -73,7 +80,7 @@ export default {
         this.currentPage = res.data.page
         this.pageTotal = res.data.total
         // 使用了 elementui 中的 el-scrollbar 刷新滚动条
-        this.$store.commit('SET_APP_SCROLLBAR')
+        // this.$store.commit('SET_APP_SCROLLBAR')
         this.tableLoading = false
       }).catch(err => {
         console.log(err)
@@ -105,6 +112,9 @@ export default {
       let query = {}
       query[name] = val
       this.$refs.mySelectTable.updateList(query)
+    },
+    handleClear() {
+      this.$refs.mySelectTable.setCurrentRow()
     }
   }
 }

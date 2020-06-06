@@ -24,7 +24,7 @@ export default class Ctips {
    * @param {*} msg 提示信息
    */
   $message(type, msg = '提示') {
-    this._vue.$message({ type: type, message: msg, duration: 2000 })
+    return this._vue.$message({ type: type, message: msg, duration: 2000 })
   }
 
   /**

@@ -43,6 +43,7 @@ export default {
     component = null,
     componentName = '',
     componentProps = {},
+    width = '600',
     confirmValidate = () => {},
     ...rest
   }) {
@@ -50,13 +51,14 @@ export default {
     return new Promise((resolve, reject) => {
       this.$msgbox({
         title: '提示',
-        message: h(component, { props: Object.assign(componentProps, { width: '800px' }) }),
+        message: h(component, { props: componentProps }),
         showCancelButton: true,
+        customClass: 'cc-dialog-width__' + width,
         beforeClose: (action, instance, done) => {
           const cpt = instance.$children.find(child => {
             return child.$options.name === component.name
           })
-          confirmValidate(action, cpt, done)
+          confirmValidate(action, cpt, instance, done)
         },
         ...rest
       })

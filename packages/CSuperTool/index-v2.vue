@@ -5,7 +5,7 @@
  -->
 <template>
   <div class="supertool">
-    <div v-if="!getInputSearch.hidden" class="supertool-input">
+    <div v-if="!getInputSearch.hidden" class="tool-input">
       <el-input
         v-model="searchInput"
         :placeholder="getInputSearch.placeholder"
@@ -22,71 +22,65 @@
     <div class="supertool-btns">
       <template v-for="btn in getShowBtns">
         <template v-if="btn.tip">
-          <el-tooltip
-            :key="btn.name"
-            v-model="btn.tipActiv"
-            :content="btn.tip"
-            :enterable="false"
-            effect="dark"
-            placement="bottom">
-            <div style="display: inline-block">
-              <template v-if="btn.delete">
-                <el-popover :key="btn.name" v-model="btn.deleteActiv" width="160" placement="top">
-                  <p>{{ btn.delete.title || '是否删除' }}</p>
-                  <div style="text-align: right; margin: 0">
-                    <el-button size="mini" type="text" @click="hanldeCancelClick(btn)">取消</el-button>
-                    <el-button type="primary" size="mini" @click="hanldeConfirmClick(btn, btn.callback)">确定</el-button>
-                  </div>
-                  <el-button
-                    slot="reference"
-                    :key="btn.name"
-                    :icon="btn.eicon"
-                    :type="btn.type"
-                    :disabled="btn.disabled"
-                    circle
-                    class="btn-item"
-                    @click="hanldeDeleteShow(btn)">
-                    <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/>
-                  </el-button>
-                </el-popover>
-              </template>
-              <template v-else-if="btn.component">
-                <el-popover
-                  ref="tools_popover"
-                  v-model="btn.popoverActiv"
-                  placement="bottom"
-                  trigger="click"
-                  style="max-width: 1000px">
-                  <div id="super_componnetn">
-                    <slot :name="btn.component"/>
-                  </div>
-                  <el-button
-                    slot="reference"
-                    :key="btn.name"
-                    :icon="btn.eicon"
-                    :type="btn.type"
-                    :disabled="btn.disabled"
-                    circle
-                    class="btn-item"
-                    @click="hanldeMoreClick(btn, btn.callback)">
-                    <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/>
-                  </el-button>
-                </el-popover>
-              </template>
-              <template v-else>
+          <div style="display: inline-block" :key="btn.name">
+            <template v-if="btn.delete">
+              <el-popover :key="btn.name" v-model="btn.deleteActiv" width="160" placement="top">
+                <p>{{ btn.delete.title || '是否删除' }}</p>
+                <div style="text-align: right; margin: 0">
+                  <el-button size="mini" type="text" @click="hanldeCancelClick(btn)">取消</el-button>
+                  <el-button type="primary" size="mini" @click="hanldeConfirmClick(btn, btn.callback)">确定</el-button>
+                </div>
                 <el-button
+                  slot="reference"
                   :key="btn.name"
                   :icon="btn.eicon"
                   :type="btn.type"
                   :disabled="btn.disabled"
-                  circle
+                  round
+                  class="btn-item"
+                  @click="hanldeDeleteShow(btn)">
+                  <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/> {{ btn.tip ||'' }}
+                </el-button>
+              </el-popover>
+            </template>
+            <template v-else-if="btn.component">
+              <el-popover
+                ref="tools_popover"
+                v-model="btn.popoverActiv"
+                placement="bottom"
+                trigger="click"
+                style="max-width: 1000px">
+                <div id="super_componnetn">
+                  <slot :name="btn.component"/>
+                </div>
+                <el-button
+                  slot="reference"
+                  :key="btn.name"
+                  :icon="btn.eicon"
+                  :type="btn.type"
+                  :disabled="btn.disabled"
+                  round
                   class="btn-item"
                   @click="hanldeMoreClick(btn, btn.callback)">
                   <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/>
+                  {{ btn.tip ||'' }}
                 </el-button>
-              </template>
-            </div>
-          </el-tooltip>
+              </el-popover>
+            </template>
+            <template v-else>
+              <el-button
+                :key="btn.name"
+                :icon="btn.eicon"
+                :type="btn.type"
+                :disabled="btn.disabled"
+                round
+                class="btn-item"
+                @click="hanldeMoreClick(btn, btn.callback)">
+                <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/>
+                {{ btn.tip ||'' }}
+              </el-button>
+            </template>
+          </div>
         </template>
         <template v-else-if="btn.delete">
           <el-popover :key="btn.name" width="160">
@@ -102,7 +96,7 @@
               :icon="btn.eicon"
               :type="btn.type"
               :disabled="btn.disabled"
-              circle
+              round
               class="btn-item"
               @click="hanldeDeleteShow(btn)">
               <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/>
@@ -124,7 +118,7 @@
                 :icon="btn.eicon"
                 :type="btn.type"
                 :disabled="btn.disabled"
-                circle
+                round
                 class="btn-item"
                 @click="hanldeMoreClick(btn, btn.callback)">
                 <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/>
@@ -139,7 +133,7 @@
               :icon="btn.eicon"
               :disabled="btn.disabled"
               class="btn-item"
-              circle
+              round
               @click="hanldeMoreClick(btn.callback)">
               <svg-icon v-if="!btn.eicon" :icon-class="btn.icon"/>
             </el-button>
@@ -148,7 +142,7 @@
       </template>
       <template v-if="getBtnLength > maxBtnCount">
         <el-dropdown trigger="hover">
-          <el-button icon="el-icon-more" class="btn-more" circle/>
+          <el-button icon="el-icon-more" class="btn-more" round>更多</el-button>
           <el-dropdown-menu slot="dropdown">
             <template v-for="b in getHideBtnsGroup">
               <el-dropdown-item
@@ -309,6 +303,10 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+/deep/ .tool-input {
+  width: 300px;
+  display: inline-block;
+} 
 .supertool {
   line-height: 49px;
   &-input {
@@ -327,7 +325,7 @@ export default {
     }
     .btn-more {
       margin-left: 6px;
-      transform: rotate(90deg);
+      // transform: rotate(90deg);
     }
   }
 

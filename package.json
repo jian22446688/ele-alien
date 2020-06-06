@@ -1,7 +1,7 @@
 {
   "name": "ele-alien",
   "description": " A Vue.js elementui componenty",
-  "version": "0.1.10",
+  "version": "0.2.10",
   "author": "Cary <798171920@qq.com>",
   "private": false,
   "main": "./dist/c-ele-alien.common.js",
